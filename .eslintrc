@@ -1,0 +1,39 @@
+{
+    "env": {
+        "shared-node-browser": true,
+        "amd": true,
+        "node": true
+    },
+    "extends": "eslint:all",
+    "rules": {
+        "curly": "off",
+        "id-length": "off",
+        "indent": [ "error", "tab" ],
+        "init-declarations": "off",
+        "max-depth": "off",
+        "max-len": "off",
+        "max-params": "off",
+        "max-statements": "off",
+        "multiline-ternary": "off",
+        "newline-before-return": "off",
+        "newline-after-var": "off",
+        "no-bitwise": "off",
+        "no-continue": "off",
+        "no-extra-parens": ["error", "all", { "nestedBinaryExpressions": false }],
+        "no-magic-numbers": "off",
+        "no-plusplus": "off",
+        "no-tabs": "off",
+        "no-ternary": "off",
+        "no-var": "off",
+        "one-var": "off",
+        "one-var-declaration-per-line": "off",
+        "padded-blocks": "off",
+        "prefer-arrow-callback": "off",
+        "prefer-reflect": "off",
+        "quote-props" : "off",
+        "space-before-function-paren": "off",
+        "sort-keys": "off",
+        "sort-vars": "off",
+        "vars-on-top": "off"
+    }
+}

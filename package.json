@@ -1,0 +1,19 @@
+{
+  "name": "mser",
+  "version": "0.0.1",
+  "description": "Javascript implementation of Maximally Stable Extremal Regions (MSER) algorithm",
+  "scripts": {
+    "lint": "$(npm bin)/eslint mser.js; exit 0",
+    "demo": "node demo/start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://slvnfchr@bitbucket.org/slvnfchr/mser.git"
+  },
+  "author": "Sylvain Foucher",
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "express": "^4.14.0",
+    "opener": "^1.4.2"
+  }
+}

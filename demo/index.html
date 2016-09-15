@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	body { margin: 0px; padding: 0px; }
+	canvas { width:100%; }
+</style>
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<script src="../mser.js"></script>
+	<script>
+
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d'),
+		imageObj = new Image();
+
+	imageObj.onload = function() {
+		canvas.setAttribute("width", imageObj.width);
+		canvas.setAttribute("height", imageObj.height);
+		context.drawImage(imageObj, 0, 0);
+		var mser = new window.MSER({
+			delta: 10, // Delta parameter of the MSER algorithm
+			minArea: 0.0001, // Minimum area of any stable region relative to the image domain area
+			maxArea: 0.5, // Maximum area of any stable region relative to the image domain area
+			maxVariation: 0.5, // Maximum variation (absolute stability score) of the regions
+			minDiversity: 0.33 // Minimum diversity of the regions
+		});
+		// extract maximally stable extremal regions from image
+		var regions = mser.extract(context.getImageData(0, 0, imageObj.width, imageObj.height));
+		regions = regions.map(function(region) {
+			return region.rect; // use only regions rect
+		});
+		// merge overlapping regions
+		var intersection;
+		for (var i = regions.length-1; i >= 0; i--) {
+			for (var j = i-1; j >= 0; j--) {
+				intersection = regions[j].intersect(regions[i]);
+				if(intersection && (intersection.size > 0.5 * regions[j].size || intersection.size > 0.5 * regions[i].size)) {
+					regions[j].merge(regions[i]);
+					regions.splice(i, 1);
+					break;
+				}
+			}
+		}
+		// draw regions
+		context.strokeStyle = "red";
+		context.lineWidth = 0.8;
+		regions.forEach(function(region) {
+			context.rect(region.left, region.top, region.width, region.height);
+		});
+		context.stroke();
+	};
+	imageObj.crossOrigin = '';
+	imageObj.src = 'lorem-ipsum.jpg';
+
+	</script>
+
+</body>
+</html>

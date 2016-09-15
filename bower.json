@@ -1,0 +1,22 @@
+{
+  "name": "mser",
+  "version": "0.0.1",
+  "homepage": "https://github.com/slvnfchr/mser",
+  "authors": [
+    "Sylvain Foucher"
+  ],
+  "description": "Javascript implementation of Maximally Stable Extremal Regions (MSER) algorithm",
+  "main": "mser.js",
+  "keywords": [
+    "canvas",
+    "mser"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
